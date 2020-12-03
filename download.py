@@ -27,7 +27,7 @@ def get_valid_filename(s):
 # Read config
 config_object = ConfigParser()
 config_object.read("config.ini")
-logininfo = config_object["DOWNLOADINFO"]
+logininfo = config_object["LOGININFO"]
 info = config_object["DOWNLOADINFO"]
 
 # Make target dir and temp dir
@@ -71,7 +71,7 @@ for name, url in items:
     time.sleep(10)
     
     soup = BeautifulSoup(driver.page_source, "html.parser")
-    region = soup.find("div", {"class": info[maindivclass]})
+    region = soup.find("div", {"class": info["maindivclass"]})
     with open(outputfile, "w") as file:
         file.write(str(region))
         
